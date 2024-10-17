@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Your Purchase</title>
+    <style>
+        .map-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        iframe {
+            width: 600px;
+            height: 450px;
+            border: 0;
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Thank You, <span id="customerName"></span>!</h1>
+        <p>You have successfully purchased <span id="productName"></span>.</p>
+    </header>
+
+    <section>
+        <div class="map-container">
+            <p>Find Us Here:</p>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.953741144712!2d-122.0842493!3d37.4219999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb8b682c0f2e1%3A0x41256476bbf1f8b9!2sGoogleplex!5e0!3m2!1sen!2sid!4v1611811982371!5m2!1sen!2sid"
+                allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <script>
+        // Ambil parameter dari URL
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get('name');
+        const product = params.get('product');
+
+        // Tampilkan informasi di halaman
+        document.getElementById('customerName').textContent = name;
+        document.getElementById('productName').textContent = product;
+    </script>
+
+    <footer>
+        <p>&copy; C' Home Cleaning Official</p>
+    </footer>
+</body>
+</html>

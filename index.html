@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Cleaning</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Tambahkan styling untuk ukuran ikon */
+        .contact-info img {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        /* Atur posisi Google Map agar berada di tengah */
+        .map-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        iframe {
+            width: 600px;
+            height: 450px;
+            border: 0;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* Awalnya sembunyikan map */
+        #map-container {
+            display: none;
+        }
+
+        /* Styling untuk tombol Google Maps di atas footer */
+        .map-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .map-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+    <script>
+        // Fungsi untuk menampilkan Google Map saat tombol diklik
+        function showMap() {
+            var mapContainer = document.getElementById('map-container');
+            mapContainer.style.display = 'block';
+        }
+
+        // Fungsi untuk mengarahkan pengguna ke WhatsApp
+        function redirectToWhatsApp(product, nameId, emailId, addressId) {
+            var name = document.getElementById(nameId).value;
+            var email = document.getElementById(emailId).value;
+            var address = document.getElementById(addressId).value;
+
+            var message = `Halo, saya ingin memesan ${product}.\nNama: ${name}\nEmail: ${email}\nAlamat: ${address}`;
+            var whatsappUrl = `https://api.whatsapp.com/send?phone=6281234567890&text=${encodeURIComponent(message)}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <h1>C' Cleaner Service</h1>
+        </div>
+        <nav>   
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="promo-banner">
+        <div class="banner-content">
+            <a href="#products" class="btn">Shop Now</a>
+            <h2 style="color:#2c134e;">Big Sale Up to 50% Off!</h2>
+        </div>
+    </section>
+    
+
+    <section id="products" class="product-section">
+        <h2>Featured Products</h2>
+        <div class="product-container">
+            <div class="product-card">
+                <img src="renang5.jpg" alt="Product 1">
+                <h3>Pool Cleaning</h3>
+                <p>Discounted Price: $20</p>
+                <form>
+                    <input type="text" id="name-pool" name="name" placeholder="Your Name" required>
+                    <input type="email" id="email-pool" name="email" placeholder="Your Email" required>
+                    <input type="text" id="address-pool" name="address" placeholder="Home Address" required>
+                    <input type="text" id="note" name="note" placeholder="Note" required>
+                    <button type="button" class="btn" onclick="redirectToWhatsApp('Pool Cleaning', 'name-pool', 'email-pool', 'address-pool')">Beli Sekarang</button>
+                </form>
+            </div>
+            <div class="product-card">
+                <img src="house_cleaner3.jpg" alt="Product 2">
+                <h3>House Cleaning</h3>
+                <p>Discounted Price: $30</p>
+                <form>
+                    <input type="text" id="name-house" name="name" placeholder="Your Name" required>
+                    <input type="email" id="email-house" name="email" placeholder="Your Email" required>
+                    <input type="text" id="address-house" name="address" placeholder="Home Address" required>
+                    <input type="text" id="note" name="note" placeholder="Note" required>
+                    <button type="button" class="btn" onclick="redirectToWhatsApp('House Cleaning', 'name-house', 'email-house', 'address-house')">Beli Sekarang</button>
+                </form>
+            </div>
+            <div class="product-card">
+                <img src="tukang_kebon3.jpeg" alt="Product 3">
+                <h3>Gardener</h3>
+                <p>Discounted Price: $25</p>
+                <form>
+                    <input type="text" id="name-gardener" name="name" placeholder="Your Name" required>
+                    <input type="email" id="email-gardener" name="email" placeholder="Your Email" required>
+                    <input type="text" id="address-gardener" name="address" placeholder="Home Address" required>
+                    <input type="text" id="note" name="note" placeholder="Note" required>
+                    <button type="button" class="btn" onclick="redirectToWhatsApp('Gardener', 'name-gardener', 'email-gardener', 'address-gardener')">Beli Sekarang</button>
+                </form>
+            </div>
+            <div class="product-card">
+                <img src="toilet2.jpg" alt="Product 4">
+                <h3>Toilet Cleaning</h3>
+                <p>Discounted Price: $25</p>
+                <form>
+                    <input type="text" id="name-toilet" name="name" placeholder="Your Name" required>
+                    <input type="email" id="email-toilet" name="email" placeholder="Your Email" required>
+                    <input type="text" id="address-toilet" name="address" placeholder="Home Address" required>
+                    <input type="text" id="note" name="note" placeholder="Note" required>
+                    <button type="button" class="btn" onclick="redirectToWhatsApp('Toilet Cleaning', 'name-toilet', 'email-toilet', 'address-toilet')">Beli Sekarang</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tombol Google Map di atas footer -->
+    <a href="https://www.google.com/maps/place/Googleplex/@37.4219999,-122.0842493,17z/" target="_blank" class="map-button">
+        Find us here !!
+    </a>
+
+    <footer id="contact">
+        <p>&copy; C' Home Cleaning Official</p>
+        <div class="contact-info">
+            <a href="https://www.instagram.com/your_instagram" target="_blank">
+                <img src="ig.png" alt="Instagram">
+            </a>
+            <a href="mailto:youremail@example.com">
+                <img src="email.png" alt="Email">
+            </a>
+            <a href="https://wa.me/yourwhatsappnumber" target="_blank">
+                <img src="wa.png" alt="WhatsApp">
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>
